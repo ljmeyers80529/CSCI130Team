@@ -1,0 +1,14 @@
+/* GENERAL */
+
+* {
+    /* for debugging: show border around elements */
+    border: 1px solid green;
+}
+
+h1 {
+    color: purple;
+}
+
+#foot {
+    color: blue;
+}
