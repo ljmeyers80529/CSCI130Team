@@ -5,6 +5,38 @@
     border: 1px solid green;
 }
 
+/* simple reset - resets browser's default styling */
+html, body, header, main, section, article, footer, div, a, ul, li, h1, h2, h3, p {
+    padding: 0;                                         /*  set default padding to 0  */
+    margin: 0;                                          /*  set default margins to 0. */
+    box-sizing: border-box;                             /* allows width and hieght to include padding and border */
+}
+
+/* #afold contains: */
+/*      header */
+/*      hero image (#hero-img) */
+/*      call to action (#cta) */
+#afold {
+    display: flex;                                      /* enable flex box. */
+    flex-direction: column;                             /* set flex main axis column top to bottom. */
+}
+
+/* these elements will take up the whole page above the fold */
+html, body, #afold {
+    height: 100%;                                       /* set html, body to use 100% of workspace. */
+}
+
+/* set the above the fold image(s) */
+#aboveImage {
+    background-color: #8e8e8e;                          /* default background color if no image. */
+    background-repeat: no-repeat;                       /* do not repeat image if image does not fit. */
+    background-attachment: fixed;                       /* do not scroll */
+    background-position: top center;                    /* set image anchor to top / left corner. */
+    background-size: cover;                             /* cover entire width or hieght of container */
+    flex-grow: 1;                                       /* grow the above the fold image to fill in unused space */
+   
+}
+
 h1 {
     color: purple;
 }
