@@ -12,7 +12,7 @@ func init() {
 	configureResourceLocation("images", "img")
 	http.Handle("/favicon.ico", http.NotFoundHandler())      // ignore favico re quest (error 404)
 	http.HandleFunc("/", index)                              // handle main page.
-	tpl = template.Must(template.ParseGlob("html/*.gohtml")) // load and parse all web pages for this project.
+	tpl = template.Must(template.ParseGlob("html/*.html")) // load and parse all web pages for this project.
 }
 
 // map resource physical location ro href relative location.
@@ -25,5 +25,5 @@ func configureResourceLocation(phyDir, hrefDir string) {
 }
 
 func index(res http.ResponseWriter, req *http.Request) {
-	tpl.ExecuteTemplate(res, "index.gohtml", nil) // executer main page HTML template
+	tpl.ExecuteTemplate(res, "index.html", nil) // executer main page HTML template
 }
