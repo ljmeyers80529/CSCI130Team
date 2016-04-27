@@ -9,7 +9,7 @@ var tpl *template.Template
 
 func init() {
 	configureResourceLocation("css", "css")
-	configureResourceLocation("images", images")
+	configureResourceLocation("images", "images")
 	http.Handle("/favicon.ico", http.NotFoundHandler())      // ignore favico re quest (error 404)
 	http.HandleFunc("/", index)                              // handle main page.
 	tpl = template.Must(template.ParseGlob("html/*.html")) // load and parse all web pages for this project.

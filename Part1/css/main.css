@@ -2,7 +2,7 @@
 
 * {
     /* for debugging: show border around elements */
-    border: 1px solid green;
+   /*border: 1px solid green;*/
 }
 
 /* simple reset - resets browser's default styling */
@@ -80,11 +80,11 @@ a {
 	color: white;
 }
 
-.foot {
-    margin: auto;
-    display: inline-flex;
-    width: 25%;
-    float: left;
-    color: blue;
+#foot {
+    padding-bottom: 10px;
+    font-size: large;
+    font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+    text-align: center;
+    color: purple;
 
 }
