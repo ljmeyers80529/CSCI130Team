@@ -2,28 +2,32 @@ package finalWeb
 
 import (
 	"encoding/json"
-	"google.golang.org/appengine"
+	"golang.org/x/net/context"
 	"google.golang.org/appengine/log"
 	"google.golang.org/appengine/memcache"
 	"net/http"
 )
 
 // retrieve user information from memcache.
-func retrieveUserInformationMemcache(userId string, req *http.Request) (UserInformation, bool) {
-	var ui UserInformation
+func retrieveUserInformationMemcache(ctx context.Context, userId string, req *http.Request) (userInformation, error) {
 
-	ctx := appengine.NewContext(req)
+	var ui userInformation
+
 	item, err := memcache.Get(ctx, userId)
 	if err != nil {
-		return initializeUserData(userId), false
+		// 		item, err = retrieveUserInformationDatastore(id, req)         // todo add data store access.
+		if err != nil {
+			return ui, err
+		}
+		setUserInformationMemcache(ctx, ui, req)
+		return ui, nil
 	}
 	err = json.Unmarshal(item.Value, &ui)
-	return ui, true
+	return ui, err
 }
 
 // save user information in memchache.
-func setUserInformationMemcache(userInfo UserInformation, req *http.Request) error {
-	ctx := appengine.NewContext(req)
+func setUserInformationMemcache(ctx context.Context, userInfo userInformation, req *http.Request) error {
 
 	log.Infof(ctx, "Key value %v", userInfo)
 	bs, err := json.Marshal(userInfo)
@@ -33,7 +37,7 @@ func setUserInformationMemcache(userInfo UserInformation, req *http.Request) err
 	memData := memcache.Item{
 		Key:   userInfo.UserId,
 		Value: bs,
-	}
+	}  
 	err = memcache.Set(ctx, &memData)
 	if err != nil {
 		return err
