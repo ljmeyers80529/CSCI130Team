@@ -1,7 +1,6 @@
 package finalWeb
 
 import (
-	// 	"html/template"
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
 	"net/http"
@@ -27,9 +26,9 @@ func index(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	if ui.LoggedIn {
-            tpl.ExecuteTemplate(res, "index.html", ui)
-        } else {
-            userLogin(res, req)
-        }
+		tpl.ExecuteTemplate(res, "index.html", ui)
+	} else {
+		userLogin(res, req)
+	}
 
 }

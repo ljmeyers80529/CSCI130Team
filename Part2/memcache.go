@@ -15,7 +15,7 @@ func retrieveUserInformationMemcache(ctx context.Context, userId string, req *ht
 
 	item, err := memcache.Get(ctx, userId)
 	if err != nil {
-		// 		item, err = retrieveUserInformationDatastore(id, req)         // todo add data store access.
+		ui, err := retrieveUserInformationDatastore(ctx, userId, req) // data not in memch=ache, check datastore.
 		if err != nil {
 			return ui, err
 		}
@@ -37,7 +37,7 @@ func setUserInformationMemcache(ctx context.Context, userInfo userInformation, r
 	memData := memcache.Item{
 		Key:   userInfo.UserId,
 		Value: bs,
-	}  
+	}
 	err = memcache.Set(ctx, &memData)
 	if err != nil {
 		return err
