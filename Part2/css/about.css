@@ -1,11 +1,17 @@
 /* user login specific css. */
 
-header {
+p {
 	display: block;
 	top: 5%;
-	left: 30%;
-	font-size: 200%;
+	left: 3%;
+	font-size: xx-large;
 	position: fixed;
 	color: white;
         background-color: transparent;
+        top: 12%;
+}
+
+a {
+    color: red;
+    font-size: large;
 }

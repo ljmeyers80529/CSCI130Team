@@ -9,12 +9,12 @@ import (
 func makeCookie(ui userInformation, req *http.Request) (*http.Cookie, error) {
 	ctx := appengine.NewContext(req)
 
-		// DATASTORE
-		err := setUserInformationDatastore(ctx, ui, req)
-		if err != nil {
-			log.Errorf(ctx, "ERROR makeCookie storeDstore: %s", err)
-			return nil, err
-		}
+	// DATASTORE
+	err := setUserInformationDatastore(ctx, ui, req)
+	if err != nil {
+		log.Errorf(ctx, "ERROR makeCookie storeDstore: %s", err)
+		return nil, err
+	}
 
 	// MEMCACHE
 	err = setUserInformationMemcache(ctx, ui, req)

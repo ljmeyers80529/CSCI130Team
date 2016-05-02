@@ -9,7 +9,7 @@ import (
 
 // retrieve data from datastore if data is not in the memcache.
 func retrieveUserInformationDatastore(ctx context.Context, userId string, req *http.Request) (userInformation, error) {
-    
+
 	key := datastore.NewKey(ctx, "Photos", userId, 0, nil)
 	var ui userInformation
 	err := datastore.Get(ctx, key, &ui)

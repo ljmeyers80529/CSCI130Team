@@ -16,6 +16,7 @@ func init() {
 	http.HandleFunc("/", index)                            // handle main page.
 	http.HandleFunc("/logout", userLogout)                 // user log out.
 	http.HandleFunc("/login", userLogin)                   // handle user login page.
+        http.HandleFunc("/about", about)                       // about web page.
 	tpl = template.Must(template.ParseGlob("html/*.html")) // load and parse all web pages for this project.
 }
 
