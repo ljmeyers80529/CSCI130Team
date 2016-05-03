@@ -1,0 +1,9 @@
+
+#aboveImage {
+    background-image: url("../images/image-small.jpeg");
+}
+
+.button {
+  position: relative;
+  left: 50px;
+}

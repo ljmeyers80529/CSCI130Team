@@ -1,0 +1,19 @@
+
+#aboveImage {
+    background-image: url("../images/image-large.jpeg");
+}
+
+#logo {
+    font-size: xx-large;
+}
+
+.navdesk {
+/* resets "width: 100%" to nothing */
+    flex-basis: 0;
+
+    /* grow horizontally */
+    flex-grow: 2;
+
+    height: 100%;
+    color: blue;
+}
