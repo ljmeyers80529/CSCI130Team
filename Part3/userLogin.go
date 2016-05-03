@@ -3,6 +3,7 @@ package finalWeb
 import (
 	"google.golang.org/appengine"
 	"google.golang.org/appengine/log"
+// 	"google.golang.org/appengine/datastore"
 	"net/http"
 )
 
@@ -17,6 +18,10 @@ func userLogin(res http.ResponseWriter, req *http.Request) {
 	}
 
 	if req.Method == "POST" && req.FormValue("password") == "csci130" {
+            
+            log.Infof(ctx, "User identifier = %v", userId)
+            
+            if userId != "" {
 		ui, err := retrieveUserInformationMemcache(ctx, userId, req)
 		if err != nil {
 			log.Errorf(ctx, "ERROR index retrieveMemc: %s", err) // expired cookie may exist on client
@@ -24,7 +29,7 @@ func userLogin(res http.ResponseWriter, req *http.Request) {
 			return
 		}
 		ui.LoggedIn = true
-		ui.Name = req.FormValue("username")
+		ui.Username = req.FormValue("username")
 		ui.UserId = userId
 
 		cookie, err := currentUser(ui, req)
@@ -36,6 +41,7 @@ func userLogin(res http.ResponseWriter, req *http.Request) {
 		http.SetCookie(res, cookie)
 		http.Redirect(res, req, `/?id=`+cookie.Value, http.StatusSeeOther)
 		return
+            }
 	}
 	tpl.ExecuteTemplate(res, "login.html", nil)
 }

@@ -15,8 +15,8 @@ func about(res http.ResponseWriter, req *http.Request) {
 		http.Error(res, err.Error(), http.StatusInternalServerError)
 		return
 	}
-        if req.FormValue("id") == "" {
+	if req.FormValue("id") == "" {
 		http.Redirect(res, req, `/about?id=`+userId, http.StatusSeeOther)
-        }
+	}
 	tpl.ExecuteTemplate(res, "about.html", nil)
 }

@@ -9,8 +9,12 @@ import (
 
 type userInformation struct {
 	UserId   string
-	Name     string
+	Username string
 	LoggedIn bool
+	Email    string
+	Age      string
+	Name     string
+	Password string
 }
 
 // get an UUID from user.
@@ -36,6 +40,10 @@ func initializeUserData(id string) userInformation {
 		UserId:   id,
 		LoggedIn: false,
 		Name:     "",
+		Email:    "",
+		Username: "",
+		Age:      "",
+		Password: "",
 	}
 	return ui
 }

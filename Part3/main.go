@@ -12,13 +12,13 @@ var urlUserID = "userId"
 func init() {
 	configureResourceLocation("css", "css")
 	configureResourceLocation("img", "images")
-    configureResourceLocation("ajax", "ajax")
-	http.Handle("/favicon.ico", http.NotFoundHandler())    // ignore favico re quest (error 404)
-	http.HandleFunc("/", index)                            // handle main page.
-	http.HandleFunc("/logout", userLogout)                 // user log out.
-	http.HandleFunc("/login", userLogin)                   // handle user login page.
-    http.HandleFunc("/about", about)                       // about web page.
-	http.HandleFunc("/register", register)					// register new user.
+	configureResourceLocation("ajax", "ajax")
+	http.Handle("/favicon.ico", http.NotFoundHandler()) // ignore favico re quest (error 404)
+	http.HandleFunc("/", index)                         // handle main page.
+	http.HandleFunc("/logout", userLogout)              // user log out.
+	http.HandleFunc("/login", userLogin)                // handle user login page.
+	http.HandleFunc("/about", about)                    // about web page.
+	http.HandleFunc("/register", register)              // register new user.
 	http.HandleFunc("/username/check", usernameCheck)
 	tpl = template.Must(template.ParseGlob("html/*.html")) // load and parse all web pages for this project.
 }
