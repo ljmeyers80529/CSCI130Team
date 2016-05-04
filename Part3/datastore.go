@@ -63,7 +63,7 @@ func checkUserExists(res http.ResponseWriter, req *http.Request) bool {
 func commitNewUsername(res http.ResponseWriter, req *http.Request, user string) {
 	ctx := appengine.NewContext(req)
 
-        var w Usernames
+	var w Usernames
 	w.Name = user
 
 	log.Infof(ctx, "Username SUBMITTED: %v", w.Name)

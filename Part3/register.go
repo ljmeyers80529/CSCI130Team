@@ -16,22 +16,21 @@ func register(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	user := req.FormValue("username")
-	if req.Method == "POST" &&  user != "" && req.FormValue("password") == req.FormValue("confirm") && checkUserExists(res, req) {
+	if req.Method == "POST" && user != "" && req.FormValue("password") == req.FormValue("confirm") && checkUserExists(res, req) {
 		commitNewUsername(res, req, user)
 
-                ui := userInformation {
-                                        UserId: userId,
-                                        Username:  user,
-                                        Password: req.FormValue("password"),
-                                        Name: req.FormValue("name"),
-                                        Email: req.FormValue("email"),
-                                        Age: req.FormValue("age"),
-                                        LoggedIn: false,
-                }
-                setUserInformationDatastore(ctx, ui, req)
-                setUserInformationMemcache(ctx, ui, req)
-                
-                
+		ui := userInformation{
+			UserId:   userId,
+			Username: user,
+			Password: req.FormValue("password"),
+			Name:     req.FormValue("name"),
+			Email:    req.FormValue("email"),
+			Age:      req.FormValue("age"),
+			LoggedIn: false,
+		}
+		setUserInformationDatastore(ctx, ui, req)
+		setUserInformationMemcache(ctx, ui, req)
+
 		http.Redirect(res, req, "/login", http.StatusSeeOther)
 	}
 	if req.FormValue("id") == "" {
