@@ -33,7 +33,15 @@ func register(res http.ResponseWriter, req *http.Request) {
 			setUserInformationMemcache(ctx, ui, req)
 			http.Redirect(res, req, "/login", http.StatusSeeOther)
 		} else {
-			ui.Email = "<invalid>"
+			ui := userInformation{
+				UserId:   userId,
+				Username: user,
+				Password: req.FormValue("password"),
+				Name:     req.FormValue("name"),
+				Email:    "<invalid>",
+				Age:      req.FormValue("age"),
+				LoggedIn: false,
+			}
 			setUserInformationDatastore(ctx, ui, req)
 			setUserInformationMemcache(ctx, ui, req)
 			http.Redirect(res, req, "/register", http.StatusSeeOther)

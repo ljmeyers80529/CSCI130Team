@@ -1,5 +1,5 @@
 var entry = document.querySelector('#enterUsername');
-var output = document.querySelector('h1');
+var output = document.querySelector('#usedmsg');
 
 function inputProcess()
 {
