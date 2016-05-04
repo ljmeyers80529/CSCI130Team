@@ -22,7 +22,7 @@ func userDataUpdate(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	user := req.FormValue("username")
-	if req.Method == "POST" && user != "" && req.FormValue("password") == req.FormValue("confirm") && checkUserExists(res, req) {
+	if req.Method == "POST" && user != "" && req.FormValue("password") == req.FormValue("confirm") {
 		commitNewUsername(res, req, user)
 
 		ui := userInformation{
@@ -32,6 +32,7 @@ func userDataUpdate(res http.ResponseWriter, req *http.Request) {
 			Name:     req.FormValue("name"),
 			Email:    req.FormValue("email"),
 			Age:      req.FormValue("age"),
+			LoggedIn: true,
 		}
 		setUserInformationDatastore(ctx, ui, req)
 		setUserInformationMemcache(ctx, ui, req)
