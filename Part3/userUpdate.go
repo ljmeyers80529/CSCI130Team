@@ -25,20 +25,27 @@ func userDataUpdate(res http.ResponseWriter, req *http.Request) {
 	if req.Method == "POST" && user != "" && req.FormValue("password") == req.FormValue("confirm") {
 		commitNewUsername(res, req, user)
 
-		ui := userInformation{
-			UserId:   userId,
-			Username: user,
-			Password: req.FormValue("password"),
-			Name:     req.FormValue("name"),
-			Email:    req.FormValue("email"),
-			Age:      req.FormValue("age"),
-			LoggedIn: true,
+		if req.FormValue("email") == "" || emailAddressValid(req.FormValue("email")) {
+			ui := userInformation{
+				UserId:   userId,
+				Username: user,
+				Password: req.FormValue("password"),
+				Name:     req.FormValue("name"),
+				Email:    req.FormValue("email"),
+				Age:      req.FormValue("age"),
+				LoggedIn: true,
+			}
+			setUserInformationDatastore(ctx, ui, req)
+			setUserInformationMemcache(ctx, ui, req)
+			http.Redirect(res, req, "/", http.StatusSeeOther)
+		} else {
+			ui.Email = "<invalid>"
+			setUserInformationDatastore(ctx, ui, req)
+			setUserInformationMemcache(ctx, ui, req)
+			http.Redirect(res, req, "/update", http.StatusSeeOther)
 		}
-		setUserInformationDatastore(ctx, ui, req)
-		setUserInformationMemcache(ctx, ui, req)
-		http.Redirect(res, req, "/", http.StatusSeeOther)	
 	}
-		if req.FormValue("id") == "" {
+	if req.FormValue("id") == "" {
 		http.Redirect(res, req, `/update?id=`+userId, http.StatusSeeOther)
 	}
 	tpl.ExecuteTemplate(res, "update.html", ui)

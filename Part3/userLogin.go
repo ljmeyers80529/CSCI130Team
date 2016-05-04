@@ -18,8 +18,8 @@ func userLogin(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	if req.Method == "POST" { 
-	//&& req.FormValue("password") == "csci130" {
+	if req.Method == "POST" {
+		//&& req.FormValue("password") == "csci130" {
 
 		var userFound bool = false // get user information from datastore.
 		var ui userInformation
@@ -33,11 +33,11 @@ func userLogin(res http.ResponseWriter, req *http.Request) {
 			}
 			if strings.ToLower(ui.Username) == strings.ToLower(req.FormValue("username")) {
 				userFound = true
-				userId = strings.Split(key.String(),",")[1]
+				userId = strings.Split(key.String(), ",")[1]
 				break
 			}
 		}
-			log.Infof(ctx, "User found? : %v information = %v", userFound, ui)
+		log.Infof(ctx, "User found? : %v information = %v", userFound, ui)
 
 		if userFound && ui.Password == req.FormValue("password") {
 			if userId != "" {

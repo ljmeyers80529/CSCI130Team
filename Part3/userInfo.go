@@ -6,6 +6,7 @@ import (
 	// 	"google.golang.org/appengine/datastore"
 	"errors"
 	"net/http"
+	"net/mail"
 )
 
 // get user id either from a cookie or the URL.
@@ -32,4 +33,10 @@ func getID(res http.ResponseWriter, req *http.Request) (string, error) {
 	}
 	id = cookie.Value
 	return id, nil
+}
+
+// check email address is valid.
+func emailAddressValid(emailAddr string) bool {
+	_, err := mail.ParseAddress(emailAddr)
+	return err == nil
 }
