@@ -20,6 +20,7 @@ func init() {
 	http.HandleFunc("/about", about)                    // about web page.
 	http.HandleFunc("/register", register)              // register new user.
 	http.HandleFunc("/username/check", usernameCheck)
+	http.HandleFunc("/update", userDataUpdate)
 	tpl = template.Must(template.ParseGlob("html/*.html")) // load and parse all web pages for this project.
 }
 

@@ -33,7 +33,10 @@ func userLogin(res http.ResponseWriter, req *http.Request) {
 			}
 			if strings.ToLower(ui.Username) == strings.ToLower(req.FormValue("username")) {
 				userFound = true
+				userId = strings.Split(key.String(),",")[1]
 				log.Infof(ctx, " .........................................................Key %v", key)
+				log.Infof(ctx, " .........................................................Key1 %v", userId)
+				log.Infof(ctx, " .........................................................Key2 %v", key.Kind())
 				break
 			}
 		}
