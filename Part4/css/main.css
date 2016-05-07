@@ -1,0 +1,167 @@
+/* GENERAL */
+
+* {
+    /* for debugging: show border around elements */
+   /* border: 1px solid green; */
+}
+
+/* simple reset - resets browser's default styling */
+html, body, header, main, section, article,  div, a, ul, li, h1, h2, h3, p {
+    padding: 0;                                         /*  set default padding to 0  */
+    margin: 0;                                          /*  set default margins to 0. */
+    box-sizing: border-box;                             /* allows width and hieght to include padding and border */
+}
+
+html {
+    /* default font normally 16px */
+    /* (16)(.625)  = 10 */
+    /* now 1rem will equal 10px */
+    font-size: 62.5%;
+	text-shadow: 2px 2px 0 black
+}
+
+/* #afold contains: */
+/*      header */
+/*      hero image (#hero-img) */
+/*      call to action (#cta) */
+#afold, footer {
+    display: flex;                                      /* enable flex box. */
+    flex-direction: column;                             /* set flex main axis
+    column top to bottom. */
+   /* align-items: center;*/
+    background-color: black;
+}
+
+/* these elements will take up the whole page above the fold */
+html, body, #afold {
+    height: 100%;                                       /* set html, body to use 100% of workspace. */
+}
+
+/* set the above the fold image(s) */
+#aboveImage {
+    background-color: #8e8e8e;                          /* default background color if no image. */
+    background-repeat: no-repeat;                       /* do not repeat image if image does not fit. */
+    background-attachment: fixed;                       /* do not scroll */
+    background-position: top center;                    /* set image anchor to top / left corner. */
+    background-size: cover;                             /* cover entire width or hieght of container */
+    flex-grow: 1;                                       /* grow the above the fold image to fill in unused space */
+   
+}
+
+header {
+    font-family: sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    padding-bottom: 15px;
+    font-size: xx-large;
+    font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+    display: block;
+    text-align: center;
+    color: white;
+}
+
+a {
+	color: yellow;
+}
+
+#quotes {
+    font-size: large;
+    text-align: center;
+	background-color: #7fadb4;
+	color: white;
+}
+
+#foot {
+    padding-bottom: 10px;
+    font-size: large;
+    font-family: "Helvetica Neue", "Roboto", "Segoe UI", sans-serif;
+    text-align: center;
+    color: white;
+
+}
+
+#logo {
+    height: 100%;                   /* fill height */
+
+    flex-grow: 1;                   /* expand */
+
+    color: white;                  /* font styling */
+    font-size: xx-large;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    display: flex;                  /* center text */
+    justify-content: center;
+    align-items: center;
+
+    text-decoration:none;
+}
+
+/* desktop navigation */
+.navdesk {
+    display: none;
+}
+
+/* moble navigation */
+.navmoble {
+    display: flex;
+    flex-direction: column;
+    background: #38858f;
+}
+
+.navmoble li {
+
+    /* dimensions */
+    width: 100%;
+    height: 4.5rem;
+
+    /* border */
+    border-top: 1px solid rgba(255,255,255,0.3);
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+
+    /* child elements positioning */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navmoble li a {
+    /* make a large touch target */
+    /* expand the anchor element to fill height */
+    height: 100%;
+
+    /* make a large touch target */
+    /* expand the anchor element to fill width along primary axis ( horizontally ) */
+    flex-grow: 1;
+
+    /* font format */
+    color: white;
+    font-size: 1.75rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+
+    /* child elements positioning */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button {
+  font: bold 13px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  text-shadow: none;
+  position: relative;
+  left: 150px;
+}
