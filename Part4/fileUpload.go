@@ -7,9 +7,9 @@ import (
 )
 
 type userFiles struct {
-	Error string
+	Error    string
 	UserFile []string
-	}
+}
 
 func userFileUpload(res http.ResponseWriter, req *http.Request) {
 	var feedback userFiles

@@ -15,7 +15,7 @@ type userInformation struct {
 	Age      string
 	Name     string
 	Password string
-	Files	 []string
+	Files    []string
 }
 
 // get an UUID from user.
