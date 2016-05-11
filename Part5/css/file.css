@@ -1,0 +1,28 @@
+#fileld {
+	position: relative;
+	top: 6%;
+}
+
+#fileld > div {
+	display: flex;
+	flex-grow: 0;
+	color: white;
+	text-align: center;
+	background-color: transparent;
+	text-shadow: 2px 2px 0 black
+}
+
+#hdr {
+	height: 8%;
+}
+
+#errH1 {
+	color: red;
+	height: 20px;
+}
+
+#fcont {
+	display: flex;
+	flex-direction: column;                             /* set flex main axis */
+	background-color: transparent;
+}

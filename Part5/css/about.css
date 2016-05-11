@@ -1,0 +1,18 @@
+/* user login specific css. */
+
+p {
+	display: block;
+	top: 5%;
+	left: 3%;
+	font-size: xx-large;
+	position: fixed;
+	color: white;
+    background-color: transparent;
+    top: 12%;
+	text-shadow: 3px 3px 0 black
+}
+
+a {
+    color: yellow;
+    font-size: large;
+}
